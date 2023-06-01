@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Api from 'api/Api';
-import css from './Reviews.module.css';
 
 function Reviews() {
   const [reviews, setReviews] = useState([])
@@ -13,7 +12,7 @@ function Reviews() {
       } )
        setReviews(review);
     });
-    }, []);
+    }, [movieId]);
 
   return (
     <ul>

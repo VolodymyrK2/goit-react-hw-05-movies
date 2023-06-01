@@ -11,7 +11,7 @@ function Cast() {
       })
       setCast(castList)
     })
-  }, [])
+  }, [movieId])
     return (
      <ul>
       {cast  && cast.map(({ castId, character, name, profileUrl }) => (
