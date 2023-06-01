@@ -1,26 +1,25 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Api from "api/Api";
+import MoviesList from "components/MoviesList/MoviesList";
 
 const Home = () => {
     const [moviesTrendingList, setMoviesTrendingList] = useState(null);
+    const location = useLocation();
     useEffect(() => {
         Api.getTrending().then((res) => {
-        const { results }= res
-        setMoviesTrendingList(results);
+            const { results } = res
+            setMoviesTrendingList(results);
         })
-    }
+       } 
     , []);
-    console.log('data: ' + moviesTrendingList);
-    return (
-        <main>
-        <ul>
-            {moviesTrendingList?.map((movie) => (
-                <li key={movie.id}>
-                    <Link to={`movies/${movie.id}`} >{movie.title ?? movie.name}</Link>
-                </li>
-            ))}
-        </ul> 
+     return (
+         <main>
+             <h1>Trending today</h1>
+             <MoviesList
+                 moviesList={moviesTrendingList}
+                 location ={location}
+             />
             <Outlet />  
      </main>       
     )

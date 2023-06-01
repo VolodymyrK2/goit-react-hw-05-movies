@@ -12,12 +12,11 @@ function Cast() {
       setCast(castList)
     })
   }, [])
-  // console.log('cast: ' + cast[0].name);
-  return (
+    return (
      <ul>
       {cast  && cast.map(({ castId, character, name, profileUrl }) => (
         <li key={castId}>
-          <img src={`https://www.themoviedb.org/t/p/w138_and_h175_face${profileUrl}`} alt=''/>
+          {profileUrl&&<img src={`https://www.themoviedb.org/t/p/w138_and_h175_face${profileUrl}`} alt='' />}
           <p>{name}</p>
           <p>Character: {character}</p>
         </li>)

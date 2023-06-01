@@ -22,5 +22,16 @@ const getCast = (movieId) => {
    .then(response => response.json())
         .catch(err => console.error('error: '+err));
 }
-const Api = { getTrending, getDetails, getCast };
+const getReviews = (movieId) => {
+  return   fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews`, options)
+   .then(response => response.json())
+        .catch(err => console.error('error: '+err));
+}
+const getSearchMovies = (query) => {
+  return   fetch(`https://api.themoviedb.org/3/search/movie?query=${query}`, options)
+   .then(response => response.json())
+        .catch(err => console.error('error: '+err));
+}
+
+const Api = { getTrending, getDetails, getCast, getReviews,getSearchMovies };
 export default Api;

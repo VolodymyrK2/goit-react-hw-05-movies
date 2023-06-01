@@ -1,26 +1,28 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { lazy } from "react";
 import css from './App.module.css'
-import Home from '../pages/Home';
-import MovieDetails from 'pages/MovieDetails';
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
+
+import SharedLayout from './SharedLayout/SharedLayout';
+
+const Home = lazy(() => import("../pages/Home"));
+const MovieDetails = lazy(() => import("../pages/MovieDetails"));
+const Cast = lazy(() => import("./Cast/Cast"));
+const Reviews = lazy(() => import("./Reviews/Reviews"));
+const SearchBox = lazy(() => import("./SearchBox/SearchBox"));
+
 export  const App = () => {
   return (
     <>
-      <header>
-      <nav>
-        <NavLink to='/'> Home </NavLink>
-        <NavLink to='/movies'> Movies </NavLink>
-        </nav>
-      </header>
-      <Routes>
-        <Route path='/' element={<Home />}/>
-          <Route path='/movies/:movieId' element={<MovieDetails />}>
-            <Route path='cast' element={<Cast />} />
-            <Route path='reviews' element={<Reviews/>}/>
-         </Route>
-      <Route path='/movies' element={<MovieDetails/> } />
-      </Routes>
+       <Routes>
+            <Route path="/" element={<SharedLayout />}>
+              <Route index element={<Home />} />
+              <Route path='/movies/:movieId' element={<MovieDetails />}>
+                  <Route path='cast' element={<Cast />} />
+                  <Route path='reviews' element={<Reviews/>}/>
+              </Route>
+              <Route path='/movies' element={<SearchBox />} />
+            </Route>
+        </Routes>
       
     </>
   );

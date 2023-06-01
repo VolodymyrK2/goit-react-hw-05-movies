@@ -1,0 +1,22 @@
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.page__header {
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2),
+            0 1px 1px rgba(0, 0, 0, 0.14),
+            0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.navlink {
+    display: inline-block;
+    margin: 30px ;
+    margin-right: 0;
+    font-size: 26px; 
+    text-decoration: none;
+    color: inherit;
+   
+}
+.active {
+    color: orange;
+}
